@@ -3,6 +3,11 @@ const user = {
   pw: 'spdlqj123!@',
 };
 
+// 사용되는 태그 변수 지정
+const inputUserEmail = document.querySelector('#userEmail');
+const inputUserPwd = document.querySelector('#userPassword');
+const btnLogin = document.querySelector('.btn-login');
+
 /*
 
 1. email 정규표현식을 사용한 validation
@@ -24,45 +29,37 @@ function pwReg(text) {
   return re.test(String(text).toLowerCase());
 }
 
-// 사용되는 태그 변수 지정
-const inputUserEmail = document.querySelector('#userEmail');
-const inputUserPwd = document.querySelector('#userPassword');
-const btnLogin = document.querySelector('.btn-login');
+// input 값 확인하는 로직은 비슷해서 함수로 만들어 봄.
+const inputEvent = (node) => {
+  node.addEventListener('input', (e) => {
+    let value = e.target.value;
+
+    if (value === '') {
+      e.target.classList.remove('is--invalid');
+    } else {
+      emailReg(value)
+        ? e.target.classList.remove('is--invalid')
+        : e.target.classList.add('is--invalid');
+    }
+  });
+};
 
 // 이메일 입력 이벤트
-inputUserEmail.addEventListener('input', (e) => {
-  let value = e.target.value;
-
-  if (value === '') {
-    e.target.classList.remove('is--invalid');
-  } else {
-    emailReg(value)
-      ? e.target.classList.remove('is--invalid')
-      : e.target.classList.add('is--invalid');
-  }
-});
+inputEvent(inputUserEmail);
 
 // 비밀번호 입력 이벤트
-inputUserPwd.addEventListener('input', (e) => {
-  let value = e.target.value;
-
-  if (value === '') {
-    e.target.classList.remove('is--invalid');
-  } else {
-    pwReg(value)
-      ? e.target.classList.remove('is--invalid')
-      : e.target.classList.add('is--invalid');
-  }
-});
+inputEvent(inputUserPwd);
 
 // 로그인 버튼 이벤트
 btnLogin.addEventListener('click', (e) => {
-  e.preventDefault();
+  e.preventDefault(); // 클릭했을 때 submit이벤트가 발생해서 일단 꺼버림.
   let valueUserEmail = inputUserEmail.value;
   let valueUserPwd = inputUserPwd.value;
 
   // 로그인 조건 처리
-  if (valueUserEmail === '') {
+  if (valueUserEmail === user.id && valueUserPwd === user.pw) {
+    window.location.href = 'welcome.html';
+  } else if (valueUserEmail === '') {
     alert('아이디 입력안함.');
   } else if (valueUserPwd === '') {
     alert('비밀번호 입력안함.');
@@ -70,7 +67,5 @@ btnLogin.addEventListener('click', (e) => {
     alert('없는 ID임.');
   } else if (valueUserPwd !== user.pw) {
     alert('없는 비밀번호임.');
-  } else {
-    window.location.href = 'welcome.html';
   }
 });
