@@ -30,25 +30,25 @@ function pwReg(text) {
 }
 
 // input 값 확인하는 로직은 똑같아서 함수로 만들어 봄.
-const inputEvent = (node) => {
-  node.addEventListener('input', (e) => {
-    let value = e.target.value;
+const inputEvent = (node, reg) => {
+  node.addEventListener('input', ({ target }) => {
+    let value = target.value;
 
     if (value === '') {
-      e.target.classList.remove('is--invalid');
+      target.classList.remove('is--invalid');
     } else {
-      emailReg(value)
-        ? e.target.classList.remove('is--invalid')
-        : e.target.classList.add('is--invalid');
+      reg(value)
+        ? target.classList.remove('is--invalid')
+        : target.classList.add('is--invalid');
     }
   });
 };
 
 // 이메일 입력 이벤트
-inputEvent(inputUserEmail);
+inputEvent(inputUserEmail, emailReg);
 
 // 비밀번호 입력 이벤트
-inputEvent(inputUserPwd);
+inputEvent(inputUserPwd, pwReg);
 
 // 로그인 버튼 이벤트
 btnLogin.addEventListener('click', (e) => {
