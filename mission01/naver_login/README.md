@@ -34,7 +34,7 @@
 
   > - `e.preventDefault()`를 사용해서 submit 이벤트를 막습니다.
   > - `valueUserEmail`과 `valueUserPwd`에 `input`에 입력된 값을 할당합니다.
-  >   ![Alt text](./assets/readme/loginBtn_click_event.png)
+  >   ![Alt text](./assets/readme/btnLogin_click.png)
 
 - 정규표현식을 사용한 validation
 

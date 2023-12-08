@@ -62,9 +62,9 @@ btnLogin.addEventListener('click', (e) => {
   } else if (valueUserPwd === '') {
     alert('비밀번호 입력안함.');
   } else if (valueUserEmail !== user.id) {
-    alert('없는 ID임.');
+    alert('없는 아이디.');
   } else if (valueUserPwd !== user.pw) {
-    alert('없는 비밀번호임.');
+    alert('없는 비밀번호.');
   } else if (valueUserEmail === user.id && valueUserPwd === user.pw) {
     window.location.href = 'welcome.html';
   }
