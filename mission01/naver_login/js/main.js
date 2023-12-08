@@ -3,9 +3,9 @@ const user = {
   pw: 'spdlqj123!@',
 };
 
-// 사용되는 태그 변수 지정
-const inputUserEmail = document.querySelector('#userEmail');
-const inputUserPwd = document.querySelector('#userPassword');
+// 사용되는 오브젝트 변수 지정
+const inputUserEmail = document.querySelector('.user-email-input');
+const inputUserPwd = document.querySelector('.user-password-input');
 const btnLogin = document.querySelector('.btn-login');
 
 /*
@@ -29,7 +29,7 @@ function pwReg(text) {
   return re.test(String(text).toLowerCase());
 }
 
-// input 값 확인하는 로직은 비슷해서 함수로 만들어 봄.
+// input 값 확인하는 로직은 똑같아서 함수로 만들어 봄.
 const inputEvent = (node) => {
   node.addEventListener('input', (e) => {
     let value = e.target.value;
@@ -57,9 +57,7 @@ btnLogin.addEventListener('click', (e) => {
   let valueUserPwd = inputUserPwd.value;
 
   // 로그인 조건 처리
-  if (valueUserEmail === user.id && valueUserPwd === user.pw) {
-    window.location.href = 'welcome.html';
-  } else if (valueUserEmail === '') {
+  if (valueUserEmail === '') {
     alert('아이디 입력안함.');
   } else if (valueUserPwd === '') {
     alert('비밀번호 입력안함.');
@@ -67,5 +65,7 @@ btnLogin.addEventListener('click', (e) => {
     alert('없는 ID임.');
   } else if (valueUserPwd !== user.pw) {
     alert('없는 비밀번호임.');
+  } else if (valueUserEmail === user.id && valueUserPwd === user.pw) {
+    window.location.href = 'welcome.html';
   }
 });
