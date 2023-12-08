@@ -28,7 +28,7 @@
   > - node를 파라미터로 받아서 이벤트를 처리하는 함수를 만들어서 재사용성을 높였습니다.
   > - `e.target.value`를 사용해서 input에 입력된 값을 `let value`에 할당합니다.
   > - `value`가 빈문자열일 경우, `e.target`에 classList를 사용해서 `is--invalid`를 추가하고, 아닐 경우 제거합니다.
-  >   ![Alt text](./assets/readme/input_event.png)
+  >   ![Alt text](./assets/readme/inputEvent.png)
 
 - 로그인 버튼을 클릭시 조건처리
 
