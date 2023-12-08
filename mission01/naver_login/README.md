@@ -19,14 +19,18 @@
 
 ## 요구사항 구현 및 기능 구현
 
-- email, pw 입력 이벤트 처리, 상태 변수 관리
+- 사용되는 변수들을 상단에 선언
+
+  > ![Alt text](./assets/readme/states.png)
+
+- email, pw 입력 이벤트 처리
 
   > - node를 파라미터로 받아서 이벤트를 처리하는 함수를 만들어서 재사용성을 높였습니다.
   > - `e.target.value`를 사용해서 input에 입력된 값을 `let value`에 할당합니다.
   > - `value`가 빈문자열일 경우, `e.target`에 classList를 사용해서 `is--invalid`를 추가하고, 아닐 경우 제거합니다.
   >   ![Alt text](./assets/readme/input_event.png)
 
-- 로그인 버튼을 클릭시 조건처리, 상태 변수 관상
+- 로그인 버튼을 클릭시 조건처리
 
   > - `e.preventDefault()`를 사용해서 submit 이벤트를 막습니다.
   > - `valueUserEmail`과 `valueUserPwd`에 `input`에 입력된 값을 할당합니다.
