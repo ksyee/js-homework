@@ -29,6 +29,12 @@ function pwReg(text) {
   return re.test(String(text).toLowerCase());
 }
 
+/* 내 코드 */
+/* ------------------------------------------------------------------------------------------------ */
+
+//todo 이메일 검사, 비밀번호 검사 코드 따로 분할하기
+//todo 상태 변수 관리하기
+
 // input 값 확인하는 로직은 똑같아서 함수로 만들어 봄.
 const inputEvent = (node, reg) => {
   node.addEventListener('input', ({ target }) => {
@@ -57,15 +63,61 @@ btnLogin.addEventListener('click', (e) => {
   let valueUserPwd = inputUserPwd.value;
 
   // 로그인 조건 처리
-  if (valueUserEmail === '') {
-    alert('아이디 입력안함.');
-  } else if (valueUserPwd === '') {
-    alert('비밀번호 입력안함.');
-  } else if (valueUserEmail !== user.id) {
-    alert('없는 아이디.');
-  } else if (valueUserPwd !== user.pw) {
-    alert('없는 비밀번호.');
-  } else if (valueUserEmail === user.id && valueUserPwd === user.pw) {
-    window.location.href = 'welcome.html';
+  // if (valueUserEmail === '') {
+  //   alert('아이디 입력안함.');
+  // } else if (valueUserPwd === '') {
+  //   alert('비밀번호 입력안함.');
+  // } else if (valueUserEmail !== user.id) {
+  //   alert('없는 아이디.');
+  // } else if (valueUserPwd !== user.pw) {
+  //   alert('없는 비밀번호.');
+  // } else if (valueUserEmail === user.id && valueUserPwd === user.pw) {
+  //   window.location.href = 'welcome.html';
+  // }
+
+  // 선생님 피드백(단순 반복은 switch문을 사용하는 것이 좋다.)
+  switch (true) {
+    case valueUserEmail === '':
+      alert('아이디 입력안함.');
+      break;
+    case valueUserPwd === '':
+      alert('비밀번호 입력안함.');
+      break;
+    case valueUserEmail !== user.id:
+      alert('없는 아이디.');
+      break;
+    case valueUserPwd !== user.pw:
+      alert('없는 비밀번호.');
+      break;
+    case valueUserEmail === user.id && valueUserPwd === user.pw:
+      window.location.href = 'welcome.html';
+      break;
   }
 });
+
+// // 함수
+// function func(변수) {
+//   // 변수.split('');
+
+//   return 변수;
+// }
+
+// func();
+
+// // console.log(func('안녕하세요'));
+
+// // 이벤트 달기
+
+// const testBtn = document.querySelector('.my-button');
+
+// testBtn.addEventListener('click', function () {
+//   console.log('안녕하세요');
+// });
+
+// const myInput = document.querySelector('.my-input');
+
+// myInput.addEventListener('input', (e) => {
+//   let value = e.target.value;
+
+//   console.log(value);
+// });
